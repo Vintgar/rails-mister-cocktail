@@ -1,18 +1,21 @@
-<%= render './shared/banner' %>
+<%= render './shared/banner', banner_url: "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png", title: "Become a cocktail master!", description: "Impress your friends! Find the best cocktail recipes and Do it!" %>
 <%= render './shared/search_bar' %>
+
 
 <div class="cards-container">
   <div class="row">
       <% @cocktails.each do |cocktail| %>
         <div class="card-container col-xm-12 col-md-6 col-lg-4 ">
-          <%= link_to cocktail_path(cocktail), class:"card-category" do %>
-            <div><%= cocktail.name %></div>
+          <% if cocktail.photo.attached? %>
+            <%= link_to cocktail_path(cocktail), class:"card-category", style:"background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(#{cl_image_path cocktail.photo.key }" do %>
+              <div><%= cocktail.name %></div>
+            <% end %>
+          <% else %>
+            <%= link_to cocktail_path(cocktail), class:"card-category", style:"background-image:linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(#{cl_image_path "vaffbtjbtvyqkmybgq8a"}" do %>
+              <div><%= cocktail.name %></div>
+            <% end %>
           <% end %>
         </div>
       <% end %>
   </div>
 </div>
-
-
-<%= cl_image_tag("vask2wwn3wqgvipkq3nr",
-      width: 400, height: 300, crop: :fill) %>

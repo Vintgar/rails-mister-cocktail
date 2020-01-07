@@ -1,4 +1,4 @@
-<h1> <%= @cocktail.name %></h1>
+<%= render './shared/banner', banner_url: cl_image_path(@cocktail.photo.key), title: @cocktail.name, description: "Super Cocktail mon ami" %>
 
 <%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail) %>
 
@@ -10,3 +10,5 @@ Liste des ingrédients :
 </ul>
 
 <%= link_to "Back to cocktails list", cocktails_path %>
+
+<%= render partial: "doses/new", cocktail: @cocktail, dose: @dose %>
