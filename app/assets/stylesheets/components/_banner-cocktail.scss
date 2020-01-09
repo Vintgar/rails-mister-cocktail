@@ -1,21 +1,26 @@
-.banner {
+.banner-cocktail {
   background-size: cover;
   background-position: center;
-  padding: 150px 0;
+  height: 100vh;
+  padding: 25vh 0;
 }
 
 
-.banner h1 {
+.banner-cocktail h1 {
   margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-  font-size: 32px;
+  font-size: 50px;
   font-weight: bold;
+  font-family: 'Dancing Script', cursive;
 }
 
-.banner p {
+.banner-cocktail p {
   font-size: 20px;
   color: white;
   opacity: .7;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  text-align: left;
 }
+
+.banner-header {margin:0px 0 50px 0}

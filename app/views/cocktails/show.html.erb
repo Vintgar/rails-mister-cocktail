@@ -1,14 +1,42 @@
-<%= render './shared/banner', banner_url: cl_image_path(@cocktail.photo.key), title: @cocktail.name, description: "Super Cocktail mon ami" %>
+<div class="banner-cocktail"  style="background-image: linear-gradient(90deg, rgba(0,0,0,-0.99) 0%,rgba(0,0,0,0.8) 80%), url(<%= cl_image_path(@cocktail.photo.key) %>);">
+  <div class="container">
+    <div class="offset-md-6 ">
+      <div class="banner-header d-flex flex-column align-items-center">
+        <h1><%= @cocktail.name %></h1>
+        <p><%= @cocktail.description %></p>
+      </div>
 
-<%= link_to "Add a new dose", new_cocktail_dose_path(@cocktail) %>
+      <div class="container-ingredients">
+        <h2>Liste des ingrédients :</h2>
+        <ul class="list-ingredients">
+          <% @cocktail.doses.each do |dose| %>
+          <li>
+            <i class="far fa-times-circle"></i><%= dose.description %> de <%= dose.ingredient.name %>  <%= link_to dose_path(dose), method: :delete do %>
+            <% end %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
-Liste des ingrédients :
-<ul>
-  <% @cocktail.doses.each do |dose| %>
-  <li><%= dose.description %> de <%= dose.ingredient.name %> <%= link_to "delete", dose_path(dose), method: :delete %></li>
+
+        <div class="btn btn-ghost edit-button" id="add-ingredient">
+          <i class="far fa-edit"></i> Add new ingredient
+        </div>
+
+      <%= link_to edit_cocktail_path(@cocktail) do %>
+        <div class="btn btn-ghost edit-button">
+          <i class="far fa-edit"></i> Edit cocktail
+        </div>
+      <% end %>
+
+      <%= render partial: "doses/new", cocktail: @cocktail, dose: @dose %>
+
+    </div>
+  </div>
+
+  <%= link_to cocktails_path do %>
+    <div class="">
+      <i class="fas fa-undo-alt"></i>Back to cocktails list
+    </div>
   <% end %>
-</ul>
-
-<%= link_to "Back to cocktails list", cocktails_path %>
-
-<%= render partial: "doses/new", cocktail: @cocktail, dose: @dose %>
+</div>

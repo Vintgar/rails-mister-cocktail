@@ -1,0 +1,12 @@
+.list-ingredients {
+  list-style: none;
+  color: white;
+  line-height: 24px;
+  padding:0;
+  margin: 20px 0;
+  font-size: 16px;
+  a {color:white;text-decoration:none}
+  li i {opacity:0; margin-right:5px;}
+  li:hover i {opacity: 1;}
+}
+
